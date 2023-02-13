@@ -5,12 +5,7 @@ async function searchMinecraftUUID(username) {
 	try {
 		// Use the CORS proxy to make the request
 		const response = await axios.get(
-			`https://playerdb.co/api/player/minecraft/${username}`,
-			{
-				headers: {
-					"User-Agent": "MyAppName/1.0",
-				},
-			}
+			`https://api.mcservertools.net/api/user/${username}`
 		);
 		return response.data;
 	} catch (error) {
@@ -24,6 +19,7 @@ function MinecraftUUIDSearch() {
 	const [uuid, setUUID] = useState("");
 	const [trimmedUUID, setTrimmedUUID] = useState("");
 	const [avatar, setAvatar] = useState("");
+	const [avatarBody, setAvatarBody] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState(null);
 
@@ -34,21 +30,25 @@ function MinecraftUUIDSearch() {
 		setUUID("");
 		setTrimmedUUID("");
 		setAvatar("");
+		setAvatarBody("");
 
 		try {
 			const response = await searchMinecraftUUID(username);
-			if (!response.data) {
+			console.log(response); // Log the response from the API.
+			if (!response.uuid) {
 				setError("Error: Unable to fetch UUID for the given username");
 				setIsLoading(false);
 				return;
 			}
 
-			const uuid = response.data.player.id; // Get full UUID.
-			const trimmedUUID = response.data.player.raw_id; // Get trimmed UUID.
-			const avatar = response.data.player.avatar; // Get player avatar.
+			const uuid = response.formatted_uuid; // Get full UUID.
+			const trimmedUUID = response.uuid; // Get trimmed UUID.
+			const avatar = response.skin_url; // Get player avatar.
+			const avatar_body = response.skin_body; // Get player full body avatar
 			setUUID(uuid);
 			setTrimmedUUID(trimmedUUID);
 			setAvatar(avatar);
+			setAvatarBody(avatar_body);
 		} catch (error) {
 			setError("Error: " + error.message);
 		} finally {
@@ -74,6 +74,7 @@ function MinecraftUUIDSearch() {
 				uuid && (
 					<p>
 						Full UUID: {uuid} &nbsp; Trimmed UUID: {trimmedUUID} &nbsp; Avatar:{" "}
+						<img src={avatarBody} alt="avatar-body" /> &nbsp;{" "}
 						<img src={avatar} alt="avatar" />
 					</p>
 				)
