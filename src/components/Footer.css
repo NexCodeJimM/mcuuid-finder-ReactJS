@@ -1,0 +1,43 @@
+.footer-main {
+    background: #4e4e4e;
+}
+
+.footer__content {
+    display: flex;
+}
+
+.footer__description {
+    width: 500px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 4rem;
+    text-align: justify;
+}
+
+.footer__description h1 {
+    color: #6FB244;
+    text-transform: uppercase;
+}
+
+.footer__description p {
+    line-height: 18pt;
+    color: #fff;
+}
+
+.footer__description a {
+    color: #6FB244;
+}
+
+.footer__description a:hover {
+    color: #477B3A;
+}
+
+.copyright {
+    color: white;
+    background: #6FB244;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+}
