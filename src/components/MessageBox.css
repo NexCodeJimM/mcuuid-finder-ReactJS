@@ -1,0 +1,22 @@
+.message-main {
+    width: 500px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 20px;
+
+    border-radius: 5px;
+    margin-top: 2rem;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.message-submit {
+    background: #6FB244;
+    border: 1px solid green;
+    color: white;
+}
+
+.message-danger {
+    border: 1px solid red;
+    background: #ff4545;
+    color: white;
+}

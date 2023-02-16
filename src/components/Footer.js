@@ -25,11 +25,19 @@ const Footer = () => {
 						</a>{" "}
 						for providing Minecraft avatars.
 					</p>
+
+					<p>MCIdentify is not affiliated with Mojang AB.</p>
 				</div>
 			</div>
 
 			<div className="copyright">
-				<p>Copyright © 2023 Jim Mendoza. All rights reserved.</p>
+				<p>
+					Copyright © 2023{" "}
+					<a href="https://jimmendoza.com" target="_blank" rel="noreferrer">
+						Jim Mendoza
+					</a>
+					. All rights reserved.
+				</p>
 			</div>
 		</div>
 	);

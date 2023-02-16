@@ -41,3 +41,12 @@
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
 }
+
+.copyright a {
+    color: #4e4e4e;
+    text-decoration: none;
+}
+
+.copyright a:hover {
+    color: #477B3A
+}

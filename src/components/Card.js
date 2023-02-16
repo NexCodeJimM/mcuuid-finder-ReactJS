@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import Notification from "./Notification";
 
 import "./Card.css";
 
 const Card = (props) => {
+	const [isCopied, setIsCopied] = useState(false);
+
 	const fullUUIDCopyHandler = async () => {
 		try {
 			await navigator.clipboard.writeText(props.uuid);
-			// alert("UUID copied to clipboard");
+			setIsCopied(true);
 		} catch (err) {
 			console.error("Failed to copy UUID: ", err);
 		}
@@ -36,6 +39,7 @@ const Card = (props) => {
 						<button className="clipboard-btn" onClick={fullUUIDCopyHandler}>
 							Copy UUID
 						</button>
+						<Notification isCopied={isCopied} />
 					</div>
 				</div>
 			</div>
